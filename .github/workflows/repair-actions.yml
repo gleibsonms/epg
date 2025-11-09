@@ -1,0 +1,19 @@
+name: Repair Actions - simple test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Print hello
+        run: |
+          echo "Actions repair workflow running"
+          echo "Date: $(date -u)"
+      - name: Show repo root
+        run: |
+          pwd
+          ls -la
