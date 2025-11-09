@@ -27,7 +27,7 @@ jobs:
         run: |
           echo "Rodando gerador com lista local (lista.m3u)..."
           ls -la
-          python3 epg_generator_auto.py --m3u lista.m3u --epg epg.xml --out epg.xml --threshold 0.72
+          python3 epg_generator.py --m3u lista.m3u --epg epg.xml --out epg.xml --threshold 0.72
         env:
           TZ: UTC
 
