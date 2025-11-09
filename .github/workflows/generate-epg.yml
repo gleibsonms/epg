@@ -1,109 +1,39 @@
-name: Generate EPG
+name: 🇧🇷 Generate Brazilian EPG
 
 on:
   schedule:
-    - cron: '0 2 * * *'   # run daily at 02:00 UTC
-  workflow_dispatch:
-
-permissions:
-  contents: write   # permite commit/push com GITHUB_TOKEN (se habilitado nas settings)
+    - cron: '0 2 * * *'  # executa todo dia às 02:00 UTC (~23:00 horário de Brasília)
+  workflow_dispatch:  # permite rodar manualmente
 
 jobs:
   generate:
     runs-on: ubuntu-latest
-    env:
-      # vars available to steps (will be overridden by secrets if definidos)
-      OUT_FILE: epg.xml
-      HOURS: 48
-      TZ_OFFSET: -3
-
     steps:
-      - name: Checkout repo (with credentials)
+      - name: 📥 Checkout repositório
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
 
-      - name: Setup Python
+      - name: 🐍 Configurar Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: ⚙️ Instalar dependências
         run: |
           python -m pip install --upgrade pip
           pip install requests
 
-      - name: Build M3U URL from secrets (or use M3U_URL)
-        id: build_url
-        run: |
-          # Prefer M3U_URL if present. Otherwise require M3U_BASE + M3U_USER + M3U_PASS.
-          if [ -n "${{ secrets.M3U_URL }}" ]; then
-            echo "Using provided M3U_URL secret."
-            echo "m3u_url=${{ secrets.M3U_URL }}" >> $GITHUB_OUTPUT
-          else
-            if [ -n "${{ secrets.M3U_BASE }}" ] && [ -n "${{ secrets.M3U_USER }}" ] && [ -n "${{ secrets.M3U_PASS }}" ]; then
-              BASE="${{ secrets.M3U_BASE }}"
-              # monta query padrão — ajuste se sua URL precisa de parâmetros diferentes
-              M3U_FULL="${BASE}?username=${{ secrets.M3U_USER }}&password=${{ secrets.M3U_PASS }}&type=m3u_plus&output=ts"
-              echo "m3u_url=${M3U_FULL}" >> $GITHUB_OUTPUT
-            else
-              echo "ERROR: provide either secret M3U_URL or (M3U_BASE + M3U_USER + M3U_PASS)"
-              exit 1
-            fi
-          fi
-
-      - name: Debug show (sanitized) and download-check
-        run: |
-          # não exponha credenciais! apenas checamos header de resposta
-          echo "Checking M3U host availability (headers only)..."
-          curl -I --max-time 15 "${{ steps.build_url.outputs.m3u_url }}" || echo "curl failed (ok if remote blocks HEAD)."
-
-      - name: Run generator (download M3U and optional EPG)
+      - name: 🧠 Gerar EPG (Brasil)
         env:
-          M3U_URL: ${{ steps.build_url.outputs.m3u_url }}
+          M3U_URL: ${{ secrets.M3U_URL }}
           EPG_URL: ${{ secrets.EPG_URL }}
-          OUT_FILE: ${{ env.OUT_FILE }}
-          HOURS: ${{ env.HOURS }}
-          TZ_OFFSET: ${{ env.TZ_OFFSET }}
         run: |
-          echo "Starting generator..."
-          if [ -z "$M3U_URL" ]; then
-            echo "ERROR: M3U_URL is empty"; exit 1
-          fi
+          echo "Baixando lista M3U e gerando EPG com foco em canais brasileiros..."
+          python epg_generator.py --m3u "$M3U_URL" --epg "$EPG_URL" --out epg.xml --hours 72 --tz-offset -3
 
-          # Build epg command with optional EPG_URL
-          if [ -n "$EPG_URL" ]; then
-            CMD="python epg_generator.py --m3u \"$M3U_URL\" --epg \"$EPG_URL\" --out \"$OUT_FILE\" --hours $HOURS --tz-offset $TZ_OFFSET"
-          else
-            CMD="python epg_generator.py --m3u \"$M3U_URL\" --out \"$OUT_FILE\" --hours $HOURS --tz-offset $TZ_OFFSET"
-          fi
-
-          echo "Running generator (command hidden for security)..."
-          # Run generator (stdout/stderr will appear in logs)
-          eval "$CMD"
-          echo "Generator finished. Showing preview of output:"
-          head -n 60 "$OUT_FILE" || true
-
-      - name: Commit epg.xml (push using GITHUB_TOKEN or GH_PAT)
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
+      - name: 💾 Commit e enviar epg.xml
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add "$OUT_FILE"
-          git commit -m "Atualiza EPG (automático)" || echo "No changes to commit"
-
-          # If GH_PAT secret is provided, use it to push (useful if repo blocks GITHUB_TOKEN)
-          if [ -n "$GH_PAT" ]; then
-            echo "Using GH_PAT to push changes."
-            # set remote URL with token (keeps token out of logs because we don't echo it)
-            REPO="${{ github.repository }}"
-            git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${REPO}.git"
-            git push origin HEAD:main
-          else
-            echo "Using default credentials (GITHUB_TOKEN) to push."
-            git push
-          fi
-
-      - name: Done
-        run: echo "Workflow finished."
+          git add epg.xml
+          git commit -m "🔁 Atualiza EPG automático (Brasil)" || echo "Sem alterações para commitar"
+          git push
