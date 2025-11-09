@@ -1,9 +1,10 @@
-name: 🇧🇷 Generate EPG (Local M3U)
+name: 🇧🇷 BR Generate EPG (Local M3U, compare & commit)
 
+# Run manually or on schedule
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '0 3 * * *'  # ajusta se quiser outro horário
 
 permissions:
   contents: write
@@ -16,8 +17,10 @@ jobs:
     steps:
       - name: Checkout repositório
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true   # garante que o GITHUB_TOKEN seja usado para push
 
-      - name: Configurar Python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
@@ -28,16 +31,63 @@ jobs:
           pip install requests
 
       - name: Rodar gerador com arquivo local
+        id: run_generator
+        env:
+          EPG_URL: ${{ secrets.EPG_URL }}
         run: |
           echo "Usando lista local: lista.m3u"
-          python epg_generator.py --m3u lista.m3u --out epg.xml --tz-offset -3 || echo "Gerador completado com warnings"
-          echo "Primeiras linhas do resultado:"
-          head -n 40 epg.xml || true
+          if [ -n "$EPG_URL" ]; then
+            echo "EPG_URL definido — o script tentará mesclar com: $EPG_URL"
+            python epg_generator.py --m3u lista.m3u --epg "$EPG_URL" --out "$OUT_FILE" --tz-offset -3 || echo "Gerador retornou não-zero mas continuando"
+          else
+            echo "EPG_URL não definido — gerando placeholders a partir da lista local"
+            python epg_generator.py --m3u lista.m3u --out "$OUT_FILE" --tz-offset -3 || echo "Gerador retornou não-zero mas continuando"
+          fi
 
-      - name: Commit e enviar epg.xml
+      - name: Verificar saída e listar arquivos
         run: |
+          echo "PWD: $(pwd)"
+          echo "Lista de arquivos no diretório:"
+          ls -la
+          echo
+          echo "Preview do arquivo gerado (primeiras 120 linhas):"
+          head -n 120 epg.xml || echo "epg.xml nao encontrado"
+          echo
+          echo "Tamanho do arquivo (bytes):"
+          wc -c epg.xml || true
+
+      - name: Comparar epg gerado com epg remoto e commitar se diferente
+        env:
+          REPO_RAW: https://raw.githubusercontent.com/${{ github.repository }}/main/epg.xml
+        run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          echo "Tentando baixar epg remoto para comparação..."
+          if curl -s -f "$REPO_RAW" -o /tmp/remote_epg.xml; then
+            echo "EPG remoto baixado com sucesso. Comparando arquivos..."
+            if cmp -s epg.xml /tmp/remote_epg.xml; then
+              echo "Sem diferenças detectadas. Não será feito commit."
+              exit 0
+            else
+              echo "Diferença detectada — faremos commit do novo epg.xml."
+            fi
+          else
+            echo "EPG remoto não encontrado ou erro no download. Iremos commitar o epg_local."
+          fi
+
+          # Opcional: adicionar metadados (não requerido) -- comentar se não quiser
+          # echo "<!-- updated: $(date -u +'%Y-%m-%dT%H:%M:%SZ') -->" >> epg.xml
+
           git add epg.xml
-          git commit -m "🔁 Atualiza EPG manual (usando lista.m3u)" || echo "Sem alterações para commitar"
-          git push
+          git commit -m "🔁 Atualiza EPG (automático) $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || echo "git commit retornou erro (possivelmente sem mudanças reais)"
+          echo "Pushing changes..."
+          # push usando token via checkout persist-credentials
+          git push origin HEAD:main
+
+      - name: Confirmar estado final
+        run: |
+          echo "Estado final do repositório (últimos commits):"
+          git --no-pager log -n 3 --pretty=format:"%h %ad %s" --date=iso
+
