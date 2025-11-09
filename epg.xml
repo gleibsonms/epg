@@ -7952,31 +7952,31 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV ANHANGUERA CATALAO HD.</desc>
   </programme>
-  <channel id="GLOBO TV ANHANGUERA CATALAO SD">
+  <channel id="tvanhanguerapalmas">
     <display-name>GLOBO TV ANHANGUERA CATALAO SD</display-name>
     <icon src="https://static.imgb.in/logos/globotvanhangueracatalaosd.png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="GLOBO TV ANHANGUERA CATALAO SD">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="tvanhanguerapalmas">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV ANHANGUERA CATALAO SD.</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="GLOBO TV ANHANGUERA CATALAO SD">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="tvanhanguerapalmas">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV ANHANGUERA CATALAO SD.</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="GLOBO TV ANHANGUERA CATALAO SD">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="tvanhanguerapalmas">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV ANHANGUERA CATALAO SD.</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="GLOBO TV ANHANGUERA CATALAO SD">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="tvanhanguerapalmas">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV ANHANGUERA CATALAO SD.</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="GLOBO TV ANHANGUERA CATALAO SD">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="tvanhanguerapalmas">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV ANHANGUERA CATALAO SD.</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="GLOBO TV ANHANGUERA CATALAO SD">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="tvanhanguerapalmas">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV ANHANGUERA CATALAO SD.</desc>
   </programme>
@@ -8120,31 +8120,31 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV ANHANGUERA JATAI HD.</desc>
   </programme>
-  <channel id="GLOBO TV ANHANGUERA JATAI SD">
+  <channel id="tvanhangueraanapolis">
     <display-name>GLOBO TV ANHANGUERA JATAI SD</display-name>
     <icon src="https://static.imgb.in/logos/globotvanhanguerajataisd.png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="GLOBO TV ANHANGUERA JATAI SD">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="tvanhangueraanapolis">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV ANHANGUERA JATAI SD.</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="GLOBO TV ANHANGUERA JATAI SD">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="tvanhangueraanapolis">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV ANHANGUERA JATAI SD.</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="GLOBO TV ANHANGUERA JATAI SD">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="tvanhangueraanapolis">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV ANHANGUERA JATAI SD.</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="GLOBO TV ANHANGUERA JATAI SD">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="tvanhangueraanapolis">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV ANHANGUERA JATAI SD.</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="GLOBO TV ANHANGUERA JATAI SD">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="tvanhangueraanapolis">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV ANHANGUERA JATAI SD.</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="GLOBO TV ANHANGUERA JATAI SD">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="tvanhangueraanapolis">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV ANHANGUERA JATAI SD.</desc>
   </programme>
@@ -8540,31 +8540,31 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV CENTRO AMERICA BARRA DO GARCAS SD.</desc>
   </programme>
-  <channel id="GLOBO TV CENTRO AMERICA NORTE HD">
+  <channel id="tvcentroamericasinop">
     <display-name>GLOBO TV CENTRO AMERICA NORTE HD</display-name>
     <icon src="https://static.imgb.in/logos/globotvcentroamericanorte.png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="GLOBO TV CENTRO AMERICA NORTE HD">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="tvcentroamericasinop">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV CENTRO AMERICA NORTE HD.</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="GLOBO TV CENTRO AMERICA NORTE HD">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="tvcentroamericasinop">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV CENTRO AMERICA NORTE HD.</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="GLOBO TV CENTRO AMERICA NORTE HD">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="tvcentroamericasinop">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV CENTRO AMERICA NORTE HD.</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="GLOBO TV CENTRO AMERICA NORTE HD">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="tvcentroamericasinop">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV CENTRO AMERICA NORTE HD.</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="GLOBO TV CENTRO AMERICA NORTE HD">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="tvcentroamericasinop">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV CENTRO AMERICA NORTE HD.</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="GLOBO TV CENTRO AMERICA NORTE HD">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="tvcentroamericasinop">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal GLOBO TV CENTRO AMERICA NORTE HD.</desc>
   </programme>
@@ -13664,87 +13664,87 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO FHD.</desc>
   </programme>
-  <channel id="RECORD RIO PRETO HD">
+  <channel id="recordrio">
     <display-name>RECORD RIO PRETO HD</display-name>
     <icon src="https://static.imgb.in/logos/recordriopreto.png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="RECORD RIO PRETO HD">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO HD.</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="RECORD RIO PRETO HD">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO HD.</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="RECORD RIO PRETO HD">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO HD.</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="RECORD RIO PRETO HD">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO HD.</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="RECORD RIO PRETO HD">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO HD.</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="RECORD RIO PRETO HD">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO HD.</desc>
   </programme>
-  <channel id="RECORD RIO PRETO HD ²">
+  <channel id="recordrio">
     <display-name>RECORD RIO PRETO HD ²</display-name>
     <icon src="https://static.imgb.in/logos/recordriopreto².png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="RECORD RIO PRETO HD ²">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO HD ².</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="RECORD RIO PRETO HD ²">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO HD ².</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="RECORD RIO PRETO HD ²">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO HD ².</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="RECORD RIO PRETO HD ²">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO HD ².</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="RECORD RIO PRETO HD ²">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO HD ².</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="RECORD RIO PRETO HD ²">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO HD ².</desc>
   </programme>
-  <channel id="RECORD RIO PRETO SD">
+  <channel id="recordrio">
     <display-name>RECORD RIO PRETO SD</display-name>
     <icon src="https://static.imgb.in/logos/recordriopretosd.png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="RECORD RIO PRETO SD">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO SD.</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="RECORD RIO PRETO SD">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO SD.</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="RECORD RIO PRETO SD">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO SD.</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="RECORD RIO PRETO SD">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO SD.</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="RECORD RIO PRETO SD">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO SD.</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="RECORD RIO PRETO SD">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="recordrio">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal RECORD RIO PRETO SD.</desc>
   </programme>
@@ -15960,31 +15960,31 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal SBT TV TAMBAU PB HD.</desc>
   </programme>
-  <channel id="SBT TV TRIBUNA ES HD">
+  <channel id="tvtribuna">
     <display-name>SBT TV TRIBUNA ES HD</display-name>
     <icon src="https://static.imgb.in/logos/sbttvtribunaes.png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="SBT TV TRIBUNA ES HD">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="tvtribuna">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal SBT TV TRIBUNA ES HD.</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="SBT TV TRIBUNA ES HD">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="tvtribuna">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal SBT TV TRIBUNA ES HD.</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="SBT TV TRIBUNA ES HD">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="tvtribuna">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal SBT TV TRIBUNA ES HD.</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="SBT TV TRIBUNA ES HD">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="tvtribuna">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal SBT TV TRIBUNA ES HD.</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="SBT TV TRIBUNA ES HD">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="tvtribuna">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal SBT TV TRIBUNA ES HD.</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="SBT TV TRIBUNA ES HD">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="tvtribuna">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal SBT TV TRIBUNA ES HD.</desc>
   </programme>
@@ -16128,31 +16128,31 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal SBR PR HD*.</desc>
   </programme>
-  <channel id="SBT+ NOVELAS">
+  <channel id="tntnovelas">
     <display-name>SBT+ NOVELAS</display-name>
     <icon src="https://static.imgb.in/logos/sbt+novelas.png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="SBT+ NOVELAS">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="tntnovelas">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal SBT+ NOVELAS.</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="SBT+ NOVELAS">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="tntnovelas">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal SBT+ NOVELAS.</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="SBT+ NOVELAS">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="tntnovelas">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal SBT+ NOVELAS.</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="SBT+ NOVELAS">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="tntnovelas">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal SBT+ NOVELAS.</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="SBT+ NOVELAS">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="tntnovelas">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal SBT+ NOVELAS.</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="SBT+ NOVELAS">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="tntnovelas">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal SBT+ NOVELAS.</desc>
   </programme>
@@ -17444,59 +17444,59 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal BAND RN HD.</desc>
   </programme>
-  <channel id="BAND RN FHD">
+  <channel id="bandhd">
     <display-name>BAND RN FHD</display-name>
     <icon src="https://static.imgb.in/logos/bandrnf.png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="BAND RN FHD">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="bandhd">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal BAND RN FHD.</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="BAND RN FHD">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="bandhd">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal BAND RN FHD.</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="BAND RN FHD">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="bandhd">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal BAND RN FHD.</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="BAND RN FHD">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="bandhd">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal BAND RN FHD.</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="BAND RN FHD">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="bandhd">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal BAND RN FHD.</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="BAND RN FHD">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="bandhd">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal BAND RN FHD.</desc>
   </programme>
-  <channel id="BAND TO HD">
+  <channel id="bandhd">
     <display-name>BAND TO HD</display-name>
     <icon src="https://static.imgb.in/logos/bandto.png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="BAND TO HD">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="bandhd">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal BAND TO HD.</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="BAND TO HD">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="bandhd">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal BAND TO HD.</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="BAND TO HD">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="bandhd">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal BAND TO HD.</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="BAND TO HD">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="bandhd">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal BAND TO HD.</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="BAND TO HD">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="bandhd">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal BAND TO HD.</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="BAND TO HD">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="bandhd">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal BAND TO HD.</desc>
   </programme>
@@ -18536,31 +18536,31 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal TERRA VIVA FHD.</desc>
   </programme>
-  <channel id="TERRA VIVA FHD ²">
+  <channel id="terra.viva.br">
     <display-name>TERRA VIVA FHD ²</display-name>
     <icon src="https://static.imgb.in/logos/terravivaf².png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="TERRA VIVA FHD ²">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="terra.viva.br">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal TERRA VIVA FHD ².</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="TERRA VIVA FHD ²">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="terra.viva.br">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal TERRA VIVA FHD ².</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="TERRA VIVA FHD ²">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="terra.viva.br">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal TERRA VIVA FHD ².</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="TERRA VIVA FHD ²">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="terra.viva.br">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal TERRA VIVA FHD ².</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="TERRA VIVA FHD ²">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="terra.viva.br">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal TERRA VIVA FHD ².</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="TERRA VIVA FHD ²">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="terra.viva.br">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal TERRA VIVA FHD ².</desc>
   </programme>
@@ -18592,31 +18592,31 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal TERRA VIVA HD.</desc>
   </programme>
-  <channel id="TERRA VIVA HD ²">
+  <channel id="terra.viva.br">
     <display-name>TERRA VIVA HD ²</display-name>
     <icon src="https://static.imgb.in/logos/terraviva².png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="TERRA VIVA HD ²">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="terra.viva.br">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal TERRA VIVA HD ².</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="TERRA VIVA HD ²">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="terra.viva.br">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal TERRA VIVA HD ².</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="TERRA VIVA HD ²">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="terra.viva.br">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal TERRA VIVA HD ².</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="TERRA VIVA HD ²">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="terra.viva.br">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal TERRA VIVA HD ².</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="TERRA VIVA HD ²">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="terra.viva.br">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal TERRA VIVA HD ².</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="TERRA VIVA HD ²">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="terra.viva.br">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal TERRA VIVA HD ².</desc>
   </programme>
@@ -18704,31 +18704,31 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal TVE HD.</desc>
   </programme>
-  <channel id="TVE HD ²">
+  <channel id="mtvhd">
     <display-name>TVE HD ²</display-name>
     <icon src="https://static.imgb.in/logos/tve².png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="TVE HD ²">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="mtvhd">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal TVE HD ².</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="TVE HD ²">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="mtvhd">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal TVE HD ².</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="TVE HD ²">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="mtvhd">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal TVE HD ².</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="TVE HD ²">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="mtvhd">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal TVE HD ².</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="TVE HD ²">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="mtvhd">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal TVE HD ².</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="TVE HD ²">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="mtvhd">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal TVE HD ².</desc>
   </programme>
@@ -20412,31 +20412,31 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal BAND SPORTS SD ².</desc>
   </programme>
-  <channel id="DSPORTS HD">
+  <channel id="xsportshd">
     <display-name>DSPORTS HD</display-name>
     <icon src="https://static.imgb.in/logos/dsports.png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="DSPORTS HD">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="xsportshd">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal DSPORTS HD.</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="DSPORTS HD">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="xsportshd">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal DSPORTS HD.</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="DSPORTS HD">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="xsportshd">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal DSPORTS HD.</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="DSPORTS HD">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="xsportshd">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal DSPORTS HD.</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="DSPORTS HD">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="xsportshd">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal DSPORTS HD.</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="DSPORTS HD">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="xsportshd">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal DSPORTS HD.</desc>
   </programme>
@@ -26404,31 +26404,31 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal OLYMPIA TV 2 (ALT 1).</desc>
   </programme>
-  <channel id="OLYMPIA TV 2 (ALT 2)">
+  <channel id="olympiatv">
     <display-name>OLYMPIA TV 2 (ALT 2)</display-name>
     <icon src="https://static.imgb.in/logos/olympiatv2(alt2).png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="OLYMPIA TV 2 (ALT 2)">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="olympiatv">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal OLYMPIA TV 2 (ALT 2).</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="OLYMPIA TV 2 (ALT 2)">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="olympiatv">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal OLYMPIA TV 2 (ALT 2).</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="OLYMPIA TV 2 (ALT 2)">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="olympiatv">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal OLYMPIA TV 2 (ALT 2).</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="OLYMPIA TV 2 (ALT 2)">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="olympiatv">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal OLYMPIA TV 2 (ALT 2).</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="OLYMPIA TV 2 (ALT 2)">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="olympiatv">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal OLYMPIA TV 2 (ALT 2).</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="OLYMPIA TV 2 (ALT 2)">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="olympiatv">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal OLYMPIA TV 2 (ALT 2).</desc>
   </programme>
@@ -32396,59 +32396,59 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal UNIVERSAL PREMIERE HD.</desc>
   </programme>
-  <channel id="UNIVERSAL REALITY FHD">
+  <channel id="universaltvhd">
     <display-name>UNIVERSAL REALITY FHD</display-name>
     <icon src="https://static.imgb.in/logos/universalrealityf.png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="UNIVERSAL REALITY FHD">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal UNIVERSAL REALITY FHD.</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="UNIVERSAL REALITY FHD">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal UNIVERSAL REALITY FHD.</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="UNIVERSAL REALITY FHD">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal UNIVERSAL REALITY FHD.</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="UNIVERSAL REALITY FHD">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal UNIVERSAL REALITY FHD.</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="UNIVERSAL REALITY FHD">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal UNIVERSAL REALITY FHD.</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="UNIVERSAL REALITY FHD">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal UNIVERSAL REALITY FHD.</desc>
   </programme>
-  <channel id="UNIVERSAL REALITY HD">
+  <channel id="universaltvhd">
     <display-name>UNIVERSAL REALITY HD</display-name>
     <icon src="https://static.imgb.in/logos/universalreality.png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="UNIVERSAL REALITY HD">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal UNIVERSAL REALITY HD.</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="UNIVERSAL REALITY HD">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal UNIVERSAL REALITY HD.</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="UNIVERSAL REALITY HD">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal UNIVERSAL REALITY HD.</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="UNIVERSAL REALITY HD">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal UNIVERSAL REALITY HD.</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="UNIVERSAL REALITY HD">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal UNIVERSAL REALITY HD.</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="UNIVERSAL REALITY HD">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal UNIVERSAL REALITY HD.</desc>
   </programme>
@@ -45136,59 +45136,59 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal TV TEMPLO HD.</desc>
   </programme>
-  <channel id="TV UNIVERSAL SD">
+  <channel id="universaltvhd">
     <display-name>TV UNIVERSAL SD</display-name>
     <icon src="https://static.imgb.in/logos/tvuniversalsd.png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="TV UNIVERSAL SD">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal TV UNIVERSAL SD.</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="TV UNIVERSAL SD">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal TV UNIVERSAL SD.</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="TV UNIVERSAL SD">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal TV UNIVERSAL SD.</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="TV UNIVERSAL SD">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal TV UNIVERSAL SD.</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="TV UNIVERSAL SD">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal TV UNIVERSAL SD.</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="TV UNIVERSAL SD">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal TV UNIVERSAL SD.</desc>
   </programme>
-  <channel id="TV UNIVERSAL SD ²">
+  <channel id="universaltvhd">
     <display-name>TV UNIVERSAL SD ²</display-name>
     <icon src="https://static.imgb.in/logos/tvuniversalsd².png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="TV UNIVERSAL SD ²">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal TV UNIVERSAL SD ².</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="TV UNIVERSAL SD ²">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal TV UNIVERSAL SD ².</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="TV UNIVERSAL SD ²">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal TV UNIVERSAL SD ².</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="TV UNIVERSAL SD ²">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal TV UNIVERSAL SD ².</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="TV UNIVERSAL SD ²">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal TV UNIVERSAL SD ².</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="TV UNIVERSAL SD ²">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="universaltvhd">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal TV UNIVERSAL SD ².</desc>
   </programme>
@@ -47124,31 +47124,31 @@
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal XXX: VENUS SD.</desc>
   </programme>
-  <channel id="XXX: VENUS SD ²">
+  <channel id="VENUSSD">
     <display-name>XXX: VENUS SD ²</display-name>
     <icon src="https://static.imgb.in/logos/xxx:venussd².png" />
   </channel>
-  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="XXX: VENUS SD ²">
+  <programme start="20251109200116 +0000" stop="20251109210116 +0000" channel="VENUSSD">
     <title lang="pt">Programa Exemplo 1</title>
     <desc lang="pt">Programação fictícia para o canal XXX: VENUS SD ².</desc>
   </programme>
-  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="XXX: VENUS SD ²">
+  <programme start="20251109210116 +0000" stop="20251109220116 +0000" channel="VENUSSD">
     <title lang="pt">Programa Exemplo 2</title>
     <desc lang="pt">Programação fictícia para o canal XXX: VENUS SD ².</desc>
   </programme>
-  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="XXX: VENUS SD ²">
+  <programme start="20251109220116 +0000" stop="20251109230116 +0000" channel="VENUSSD">
     <title lang="pt">Programa Exemplo 3</title>
     <desc lang="pt">Programação fictícia para o canal XXX: VENUS SD ².</desc>
   </programme>
-  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="XXX: VENUS SD ²">
+  <programme start="20251109230116 +0000" stop="20251110000116 +0000" channel="VENUSSD">
     <title lang="pt">Programa Exemplo 4</title>
     <desc lang="pt">Programação fictícia para o canal XXX: VENUS SD ².</desc>
   </programme>
-  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="XXX: VENUS SD ²">
+  <programme start="20251110000116 +0000" stop="20251110010116 +0000" channel="VENUSSD">
     <title lang="pt">Programa Exemplo 5</title>
     <desc lang="pt">Programação fictícia para o canal XXX: VENUS SD ².</desc>
   </programme>
-  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="XXX: VENUS SD ²">
+  <programme start="20251110010116 +0000" stop="20251110020116 +0000" channel="VENUSSD">
     <title lang="pt">Programa Exemplo 6</title>
     <desc lang="pt">Programação fictícia para o canal XXX: VENUS SD ².</desc>
   </programme>
