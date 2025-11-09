@@ -2,42 +2,62 @@ name: BR Generate EPG (Local M3U)
 
 on:
   workflow_dispatch:
-
-permissions:
-  contents: write
+  schedule:
+    - cron: '0 2 * * *' # diário às 02:00 UTC (ajuste se necessário)
 
 jobs:
   generate:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install requirements (none needed, stdlib used)
         run: |
-          python -m pip install --upgrade pip
-          pip install requests
+          python -V
 
-      - name: Run EPG generator
+      - name: Run EPG generator (local M3U)
         run: |
-          echo "Gerando EPG com base na lista local (lista.m3u)..."
-          python epg_generator.py --m3u lista.m3u --out epg.xml --tz-offset -3
+          echo "Rodando gerador com lista local (lista.m3u)..."
+          ls -la
+          python3 epg_generator_auto.py --m3u lista.m3u --epg epg.xml --out epg.xml --threshold 0.72
+        env:
+          TZ: UTC
 
-      - name: Preview generated EPG
+      - name: Show preview (first lines)
         run: |
-          echo "Primeiras linhas do epg.xml gerado:"
-          head -n 50 epg.xml || echo "Arquivo epg.xml não encontrado"
+          echo "PWD: $(pwd)"
+          echo "Lista de arquivos no diretório:"
+          ls -la
+          echo "Preview do arquivo gerado (primeiras 120 linhas):"
+          head -n 120 epg.xml || true
 
-      - name: Commit and push changes
+      - name: Upload debug artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: epg-debug-files
+          path: |
+            m3u_ids.txt
+            epg_ids.txt
+            channel_map_suggestions.json
+
+      - name: Commit and push epg.xml if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add epg.xml
-          git commit -m "🔁 Atualiza EPG automaticamente" || echo "Nenhuma alteração para commitar"
-          git push origin main || echo "Nada para enviar"
+          git add epg.xml || true
+          git status --porcelain
+          if ! git diff --staged --quiet; then
+            git commit -m "Atualiza epg.xml (automático) [ci]" || true
+            git push
+            echo "EPG commitado e enviado."
+          else
+            echo "Sem alterações para commitar."
+          fi
