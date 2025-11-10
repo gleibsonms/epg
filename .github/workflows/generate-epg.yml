@@ -1,27 +1,118 @@
-- name: Download remote EPG
-  run: |
-    echo "Baixando EPG remoto a partir de secret EPG_URL..."
-    # tenta baixar para epg_remote.xml; falha se status != 200
-    curl -fsSL "${{ secrets.EPG_URL }}" -o epg_remote.xml
-    echo "Tamanho do arquivo epg_remote.xml:"
-    wc -c epg_remote.xml || true
+name: Generate EPG (Auto)
 
-- name: Run EPG generator (using remote EPG)
-  run: |
-    echo "Rodando gerador com EPG remoto (epg_remote.xml) e M3U local (lista.m3u)..."
-    ls -la
-    # execute o seu script, apontando para o EPG remoto como input e escrevendo epg.xml como saída
-    python3 epg_generator.py --m3u lista.m3u --epg epg_remote.xml --out epg.xml
-  env:
-    TZ: UTC
+# Permissão para que o job faça commit/push do arquivo gerado
+permissions:
+  contents: write
 
-- name: Commit and push epg.xml if changed
-  run: |
-    git config user.name "github-actions[bot]"
-    git config user.email "github-actions[bot]@users.noreply.github.com"
-    git add epg.xml || true
-    # commit só se houver alterações
-    git diff --staged --quiet || ( git commit -m "Atualiza epg.xml (automático)" && git push )
-  env:
-    # GITHUB_TOKEN já está disponível automaticamente nas Actions; actions/checkout deve preservar credenciais
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+on:
+  workflow_dispatch:   # permite rodar manualmente pelo Actions
+  schedule:
+    - cron: '0 2 * * *'   # opcional: roda todo dia 02:00 UTC (ajuste se quiser)
+
+jobs:
+  generate-epg:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true  # precisa para git push usar o token
+
+      - name: Show repo files (debug)
+        run: |
+          echo "PWD: $(pwd)"
+          ls -la
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Download remote EPG (if EPG_URL secret present)
+        if: ${{ secrets.EPG_URL != '' }}
+        run: |
+          echo "Baixando EPG remoto de EPG_URL..."
+          curl -fsSL "${{ secrets.EPG_URL }}" -o epg_remote.xml
+          echo "epg_remote.xml size:"
+          wc -c epg_remote.xml || true
+
+      - name: Download remote M3U (if M3U_URL secret present)
+        if: ${{ secrets.M3U_URL != '' }}
+        run: |
+          echo "Baixando M3U remoto de M3U_URL..."
+          curl -fsSL "${{ secrets.M3U_URL }}" -o lista.m3u
+          echo "lista.m3u size:"
+          wc -c lista.m3u || true
+
+      - name: Install requirements (if you have requirements.txt)
+        if: test -f requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run EPG generator
+        run: |
+          # Decide qual EPG input usar: epg_remote.xml (se baixado) ou epg.xml do repo
+          if [ -f epg_remote.xml ]; then
+            EPG_INPUT="epg_remote.xml"
+          else
+            EPG_INPUT="epg.xml"
+          fi
+          echo "Usando EPG input: $EPG_INPUT"
+          echo "Lista M3U usada: lista.m3u (se existir no repo ou foi baixada de M3U_URL)"
+          ls -la
+
+          # escolhe o script a executar (epg_generator_auto.py tem prioridade)
+          if [ -f epg_generator_auto.py ]; then
+            echo "Executando epg_generator_auto.py ..."
+            python3 epg_generator_auto.py --m3u lista.m3u --epg "$EPG_INPUT" --out epg.xml --map channel_map_suggestions.json
+            rc=$?
+          elif [ -f epg_generator.py ]; then
+            echo "Executando epg_generator.py (fallback) ..."
+            python3 epg_generator.py --m3u lista.m3u --epg "$EPG_INPUT" --out epg.xml --map channel_map_suggestions.json
+            rc=$?
+          else
+            echo "ERRO: nenhum gerador encontrado (procure por epg_generator_auto.py ou epg_generator.py)"
+            rc=3
+          fi
+          echo "exit code do gerador: $rc"
+          if [ "$rc" -ne 0 ]; then
+            echo "::error::EPG generator failed with exit code $rc"
+            exit $rc
+          fi
+
+      - name: Preview generated EPG (first 60 lines)
+        if: always()
+        run: |
+          echo "Preview epg.xml (primeiras 60 linhas):"
+          head -n 60 epg.xml || true
+
+      - name: Commit and push epg.xml if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Adiciona o arquivo gerado (se existir)
+          git add epg.xml || true
+          # Se houver alterações staged, faz commit e push
+          if git diff --cached --quiet; then
+            echo "Sem alterações para commitar."
+          else
+            git commit -m "Atualiza epg.xml (automático) [ci]" || true
+            echo "Enviando alterações para origin..."
+            git push origin HEAD:main
+          fi
+
+      - name: Upload map log artifact (optional)
+        if: always() && (exists('epg_generated_map_log.txt') || exists('epg_map_log.txt') )
+        uses: actions/upload-artifact@v4
+        with:
+          name: epg-map-log
+          path: |
+            epg_generated_map_log.txt
+            epg_map_log.txt
+        # nota: o 'exists' aqui é apenas ilustrativo; se preferir, remova a condição e deixe subir sempre
+
+      - name: Done
+        run: echo "Workflow de geração de EPG finalizado."
