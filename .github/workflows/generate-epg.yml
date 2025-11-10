@@ -1,93 +1,26 @@
 name: Generate EPG
-
 on:
+  schedule:
+    - cron: '0 */6 * * *' # a cada 6 horas (ajuste se quiser)
   workflow_dispatch:
 
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-
-      - name: Setup Python
+      - uses: actions/checkout@v4
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
-
-      - name: Show repository files (debug)
-        run: |
-          pwd
-          ls -la
-
-      - name: Install requirements (if present)
-        run: |
-          if [ -f requirements.txt ]; then
-            python -m pip install --upgrade pip
-            pip install -r requirements.txt
-          else
-            python -m pip install --upgrade pip
-            pip install unidecode
-          fi
-
-      - name: Try download EPG remote (if secret set)
-        if: ${{ secrets.EPG_URL != '' }}
-        run: |
-          set -e
-          echo "EPG_URL definido. Tentando baixar EPG remoto..."
-          echo "*** *** ***"
-          curl -fSL "${{ secrets.EPG_URL }}" -o epg_remote.xml
-          echo "Baixado epg_remote.xml"
-
-      - name: Try download M3U remote (if secret set)
-        if: ${{ secrets.M3U_URL != '' }}
-        run: |
-          set -e
-          echo "M3U_URL definido. Tentando baixar M3U remoto..."
-          curl -fSL "${{ secrets.M3U_URL }}" -o lista.m3u
-          echo "Baixado lista.m3u"
-
-      - name: Choose source EPG
-        id: choose_source
-        run: |
-          if [ -f epg_remote.xml ]; then
-            echo "source=epg_remote.xml" >> $GITHUB_OUTPUT
-          else
-            if [ -f epg.xml ]; then
-              echo "source=epg.xml" >> $GITHUB_OUTPUT
-            else
-              echo "source=" >> $GITHUB_OUTPUT
-            fi
-          fi
-
-      - name: Run EPG generator (local M3U)
-        run: |
-          set -e
-          source="${{ steps.choose_source.outputs.source }}"
-          if [ -z "$source" ]; then
-            echo "Nenhuma fonte de EPG encontrada. Abortando."
-            exit 1
-          fi
-          echo "Rodando gerador com source: $source"
-          # Ajuste o comando abaixo conforme seu gerador aceita parâmetros
-          python3 epg_generator.py --m3u lista.m3u --epg "$source" --out epg.xml --threshold 0.72
-
-      - name: Preview generated EPG (first 80 lines)
-        if: always()
-        run: |
-          echo "Preview do arquivo gerado (primeiras 80 linhas):"
-          head -n 80 epg.xml || true
-
-      - name: Commit and push epg.xml if changed
+          python-version: '3.10'
+      - name: Install deps
+        run: pip install requests
+      - name: Run generator
+        run: python epg_generator.py "https://raw.githubusercontent.com/USER/REPO/main/lista.m3u" --out epg.xml
+      - name: Commit epg
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add epg.xml || true
-          if git diff --staged --quiet; then
-            echo "Nothing to commit, working tree clean"
-          else
-            git commit -m "Atualiza epg.xml (automático)"
-            git push origin HEAD:main
-          fi
+          git add epg.xml
+          git commit -m "Automated EPG update" || echo "No changes to commit"
+          git push
