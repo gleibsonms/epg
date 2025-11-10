@@ -6,20 +6,16 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
-
-    # passa os secrets para o ambiente do job (vazios se não existirem)
-    env:
-      EPG_URL: ${{ secrets.EPG_URL }}
-      M3U_URL: ${{ secrets.M3U_URL }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: '3.x'
 
       - name: Show repository files (debug)
         run: |
@@ -28,69 +24,70 @@ jobs:
 
       - name: Install requirements (if present)
         run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; else echo "Nenhum requirements.txt encontrado"; fi
-
-      - name: Try download EPG remote (if env set)
-        run: |
-          set -e
-          if [ -n "$EPG_URL" ]; then
-            echo "EPG_URL definido. Tentando baixar EPG remoto..."
-            if curl -sS -f "$EPG_URL" -o epg_remote.xml; then
-              echo "EPG remoto baixado para epg_remote.xml"
-            else
-              echo "Falha ao baixar EPG remoto (status não 2xx). Removendo epg_remote.xml se existir."
-              rm -f epg_remote.xml || true
-            fi
+          if [ -f requirements.txt ]; then
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
           else
-            echo "EPG_URL não definido — pulando download remoto."
+            python -m pip install --upgrade pip
+            pip install unidecode
           fi
 
-      - name: Try download M3U remote (if env set)
+      - name: Try download EPG remote (if secret set)
+        if: ${{ secrets.EPG_URL != '' }}
         run: |
           set -e
-          if [ -n "$M3U_URL" ]; then
-            echo "M3U_URL definido. Tentando baixar lista M3U remota..."
-            if curl -sS -f "$M3U_URL" -o lista.m3u; then
-              echo "M3U remoto baixado para lista.m3u"
-            else
-              echo "Falha ao baixar M3U remoto; removendo lista.m3u baixada."
-              rm -f lista.m3u || true
-            fi
-          else
-            echo "M3U_URL não definido — esperando arquivo lista.m3u no repositório."
-          fi
+          echo "EPG_URL definido. Tentando baixar EPG remoto..."
+          echo "*** *** ***"
+          curl -fSL "${{ secrets.EPG_URL }}" -o epg_remote.xml
+          echo "Baixado epg_remote.xml"
+
+      - name: Try download M3U remote (if secret set)
+        if: ${{ secrets.M3U_URL != '' }}
+        run: |
+          set -e
+          echo "M3U_URL definido. Tentando baixar M3U remoto..."
+          curl -fSL "${{ secrets.M3U_URL }}" -o lista.m3u
+          echo "Baixado lista.m3u"
 
       - name: Choose source EPG
-        id: choose_epg
+        id: choose_source
         run: |
           if [ -f epg_remote.xml ]; then
-            echo "source=epg_remote.xml" > source.txt
+            echo "source=epg_remote.xml" >> $GITHUB_OUTPUT
           else
-            echo "source=epg.xml" > source.txt
+            if [ -f epg.xml ]; then
+              echo "source=epg.xml" >> $GITHUB_OUTPUT
+            else
+              echo "source=" >> $GITHUB_OUTPUT
+            fi
           fi
-          cat source.txt
-          echo ::set-output name=source::$(cut -d'=' -f2 source.txt)
 
       - name: Run EPG generator (local M3U)
         run: |
           set -e
-          SRC="${{ steps.choose_epg.outputs.source }}"
-          echo "Rodando gerador com source: ${SRC}"
-          # Ajuste a linha abaixo conforme seu epg_generator.py espera os argumentos
-          python3 epg_generator.py --m3u lista.m3u --epg "${SRC}" --out epg.xml
+          source="${{ steps.choose_source.outputs.source }}"
+          if [ -z "$source" ]; then
+            echo "Nenhuma fonte de EPG encontrada. Abortando."
+            exit 1
+          fi
+          echo "Rodando gerador com source: $source"
+          # Ajuste o comando abaixo conforme seu gerador aceita parâmetros
+          python3 epg_generator.py --m3u lista.m3u --epg "$source" --out epg.xml --threshold 0.72
 
       - name: Preview generated EPG (first 80 lines)
-        run: head -n 80 epg.xml || true
+        if: always()
+        run: |
+          echo "Preview do arquivo gerado (primeiras 80 linhas):"
+          head -n 80 epg.xml || true
 
       - name: Commit and push epg.xml if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add epg.xml || true
-          if ! git diff --staged --quiet --exit-code; then
-            git commit -m "Atualiza epg.xml (gerado pelo workflow)" || true
-            git push origin HEAD:main
+          if git diff --staged --quiet; then
+            echo "Nothing to commit, working tree clean"
           else
-            echo "Nada para commitar"
+            git commit -m "Atualiza epg.xml (automático)"
+            git push origin HEAD:main
           fi
