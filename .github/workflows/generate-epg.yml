@@ -1,0 +1,105 @@
+name: Generate EPG (Auto)
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *' # opcional: daily 02:00 UTC
+
+jobs:
+  generate-epg:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Show repository files (debug)
+        run: |
+          echo "PWD: $(pwd)"
+          ls -la
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Download remote EPG if provided
+        if: ${{ secrets.EPG_URL }}
+        run: |
+          echo "Baixando EPG remoto..."
+          curl -fsSL "${{ secrets.EPG_URL }}" -o epg_remote.xml
+          wc -c epg_remote.xml || true
+
+      - name: Download remote M3U if provided
+        if: ${{ secrets.M3U_URL }}
+        run: |
+          echo "Baixando M3U remoto..."
+          curl -fsSL "${{ secrets.M3U_URL }}" -o lista.m3u
+          wc -c lista.m3u || true
+
+      - name: Install requirements (if available)
+        if: test -f requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run EPG generator
+        run: |
+          # Decide which EPG input to use
+          if [ -f epg_remote.xml ]; then
+            EPG_INPUT="epg_remote.xml"
+          else
+            EPG_INPUT="epg.xml"
+          fi
+          echo "EPG input: $EPG_INPUT"
+
+          # Ensure M3U exists (either downloaded or in repo)
+          if [ ! -f lista.m3u ]; then
+            echo "::error::lista.m3u not found (place it in the repo or set M3U_URL secret)"
+            exit 2
+          fi
+
+          # Choose script to run
+          if [ -f epg_generator_auto.py ]; then
+            echo "Running epg_generator_auto.py ..."
+            python3 epg_generator_auto.py --m3u lista.m3u --epg "$EPG_INPUT" --out epg.xml
+            rc=$?
+          elif [ -f epg_generator.py ]; then
+            echo "Running epg_generator.py ..."
+            python3 epg_generator.py --m3u lista.m3u --epg "$EPG_INPUT" --out epg.xml
+            rc=$?
+          else
+            echo "::error::No generator script found (epg_generator_auto.py or epg_generator.py)"
+            exit 3
+          fi
+
+          echo "Generator exit code: $rc"
+          if [ "$rc" -ne 0 ]; then
+            exit $rc
+          fi
+
+      - name: Preview generated EPG (first 80 lines)
+        if: always()
+        run: |
+          echo "----- epg.xml preview -----"
+          head -n 80 epg.xml || true
+
+      - name: Commit and push epg.xml if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add epg.xml || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Atualiza epg.xml (automático) [ci]" || true
+            git push origin HEAD:main
+          fi
+
+      - name: Done
+        run: echo "Finished generate-epg workflow."
