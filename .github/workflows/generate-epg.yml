@@ -6,6 +6,12 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
+
+    # passa os secrets para o ambiente do job (vazios se não existirem)
+    env:
+      EPG_URL: ${{ secrets.EPG_URL }}
+      M3U_URL: ${{ secrets.M3U_URL }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -13,50 +19,66 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
-      - name: Show repo files (debug)
-        run: ls -la
+      - name: Show repository files (debug)
+        run: |
+          pwd
+          ls -la
 
-      - name: Install requirements
+      - name: Install requirements (if present)
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; else echo "Nenhum requirements.txt encontrado"; fi
 
-      # optional: try download EPG remote if you set a secret EPG_URL
-      - name: Try download EPG remote (if secret set)
-        if: ${{ secrets.EPG_URL != '' }}
+      - name: Try download EPG remote (if env set)
         run: |
           set -e
-          echo "EPG_URL definido. Tentando baixar EPG remoto..."
-          curl -sS -f "${{ secrets.EPG_URL }}" -o epg_remote.xml || { echo "Falha ao baixar EPG remoto (status não 2xx). Removendo epg_remote.xml se existir."; rm -f epg_remote.xml; }
+          if [ -n "$EPG_URL" ]; then
+            echo "EPG_URL definido. Tentando baixar EPG remoto..."
+            if curl -sS -f "$EPG_URL" -o epg_remote.xml; then
+              echo "EPG remoto baixado para epg_remote.xml"
+            else
+              echo "Falha ao baixar EPG remoto (status não 2xx). Removendo epg_remote.xml se existir."
+              rm -f epg_remote.xml || true
+            fi
+          else
+            echo "EPG_URL não definido — pulando download remoto."
+          fi
 
-      # optional: try download M3U remote if you set a secret M3U_URL
-      - name: Try download M3U remote (if secret set)
-        if: ${{ secrets.M3U_URL != '' }}
+      - name: Try download M3U remote (if env set)
         run: |
           set -e
-          echo "M3U_URL definido. Tentando baixar M3U remoto..."
-          curl -sS -f "${{ secrets.M3U_URL }}" -o lista.m3u || { echo "Falha ao baixar M3U remoto."; rm -f lista.m3u; }
+          if [ -n "$M3U_URL" ]; then
+            echo "M3U_URL definido. Tentando baixar lista M3U remota..."
+            if curl -sS -f "$M3U_URL" -o lista.m3u; then
+              echo "M3U remoto baixado para lista.m3u"
+            else
+              echo "Falha ao baixar M3U remoto; removendo lista.m3u baixada."
+              rm -f lista.m3u || true
+            fi
+          else
+            echo "M3U_URL não definido — esperando arquivo lista.m3u no repositório."
+          fi
 
       - name: Choose source EPG
         id: choose_epg
         run: |
           if [ -f epg_remote.xml ]; then
-            echo "source=epg_remote.xml" > tmp.txt
+            echo "source=epg_remote.xml" > source.txt
           else
-            echo "source=epg.xml" > tmp.txt
+            echo "source=epg.xml" > source.txt
           fi
-          cat tmp.txt
-          echo "::set-output name=source::$(cat tmp.txt | cut -d'=' -f2)"
+          cat source.txt
+          echo ::set-output name=source::$(cut -d'=' -f2 source.txt)
 
       - name: Run EPG generator (local M3U)
         run: |
           set -e
-          source_file="${{ steps.choose_epg.outputs.source }}"
-          echo "Rodando gerador com source: source=${source_file}"
-          # Ajuste os caminhos/flags conforme seu script precisa
-          python3 epg_generator.py --m3u lista.m3u --epg "${source_file}" --out epg.xml
+          SRC="${{ steps.choose_epg.outputs.source }}"
+          echo "Rodando gerador com source: ${SRC}"
+          # Ajuste a linha abaixo conforme seu epg_generator.py espera os argumentos
+          python3 epg_generator.py --m3u lista.m3u --epg "${SRC}" --out epg.xml
 
       - name: Preview generated EPG (first 80 lines)
         run: head -n 80 epg.xml || true
