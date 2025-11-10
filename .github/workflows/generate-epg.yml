@@ -2,8 +2,8 @@ name: Generate EPG
 
 on:
   schedule:
-    - cron: '0 */6 * * *'   # Executa a cada 6 horas
-  workflow_dispatch:         # Permite rodar manualmente
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
 
 jobs:
   generate:
@@ -14,7 +14,7 @@ jobs:
 
       - name: Show workspace (debug)
         run: |
-          echo "Diretório atual: $(pwd)"
+          echo "Working directory: $(pwd)"
           ls -la
 
       - name: Set up Python
@@ -25,13 +25,27 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run generator using local lista.m3u
-        run: python epg_generator.py lista.m3u --out epg.xml
+      - name: Run generator using local lista.m3u and EPG external
+        env:
+          EPG_URL: ${{ secrets.EPG_URL }}
+        run: |
+          echo "EPG_URL (secret) length: ${#EPG_URL}"
+          # confirma que lista.m3u existe
+          if [ ! -f lista.m3u ]; then
+            echo "ERRO: lista.m3u nao encontrada no workspace"
+            ls -la
+            exit 2
+          fi
+          # executa o gerador, passando o secret como --epg-source
+          python epg_generator.py lista.m3u --epg-source "$EPG_URL" --out epg.xml
+
+      - name: Show beginning of generated epg (debug)
+        run: head -n 200 epg.xml || true
 
       - name: Commit EPG file
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add epg.xml
-          git commit -m "Automated EPG update" || echo "Nenhuma alteração para commitar"
+          git commit -m "Automated EPG update" || echo "No changes to commit"
           git push
