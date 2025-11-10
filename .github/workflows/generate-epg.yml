@@ -1,8 +1,9 @@
 name: Generate EPG
+
 on:
   schedule:
-    - cron: '0 */6 * * *'   # a cada 6 horas (ajuste se quiser)
-  workflow_dispatch:
+    - cron: '0 */6 * * *'   # Executa a cada 6 horas
+  workflow_dispatch:         # Permite rodar manualmente
 
 jobs:
   generate:
@@ -13,7 +14,7 @@ jobs:
 
       - name: Show workspace (debug)
         run: |
-          echo "Working directory: $(pwd)"
+          echo "Diretório atual: $(pwd)"
           ls -la
 
       - name: Set up Python
@@ -21,16 +22,16 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install deps
+      - name: Install dependencies
         run: pip install requests
 
       - name: Run generator using local lista.m3u
         run: python epg_generator.py lista.m3u --out epg.xml
 
-      - name: Commit epg
+      - name: Commit EPG file
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add epg.xml
-          git commit -m "Automated EPG update" || echo "No changes to commit"
+          git commit -m "Automated EPG update" || echo "Nenhuma alteração para commitar"
           git push
