@@ -2,115 +2,92 @@ name: Generate EPG
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 2 * * *'   # ajuste se quiser rodar automaticamente
-
-permissions:
-  contents: write   # para poder commitar o epg gerado
-  id-token: write
 
 jobs:
   generate:
     runs-on: ubuntu-latest
-    env:
-      # expõe o secret para os steps via variável de ambiente (não escrevendo secret diretamente nos logs)
-      EPG_URL: ${{ secrets.EPG_URL }}
-      M3U_URL: ${{ secrets.M3U_URL || '' }}   # opcional
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Show repository files (debug)
+        run: ls -la
+
+      - name: Try download EPG remote (if env set)
+        run: |
+          set -e
+          if [ -n "${{ secrets.EPG_URL }}" ]; then
+            echo "EPG_URL definido. Tentando baixar EPG remoto..."
+            echo "***" "${{ secrets.EPG_URL }}" "***"
+            if curl -f -L -s -o epg_remote.xml "${{ secrets.EPG_URL }}"; then
+              echo "EPG remoto salvo em epg_remote.xml"
+            else
+              echo "Falha ao baixar EPG remoto (status não 2xx). Removendo epg_remote.xml se existir."
+              rm -f epg_remote.xml || true
+            fi
+          else
+            echo "EPG_URL não definido - pulando download remoto."
+          fi
+
+      - name: Try download M3U remote (if env set)
+        run: |
+          set -e
+          if [ -n "${{ secrets.M3U_URL }}" ]; then
+            echo "M3U_URL definido. Tentando baixar M3U remoto..."
+            if curl -f -L -s -o lista.m3u "${{ secrets.M3U_URL }}"; then
+              echo "M3U salvo em lista.m3u"
+            else
+              echo "Falha ao baixar M3U remoto."
+              exit 1
+            fi
+          else
+            echo "M3U_URL não definido - usando lista.m3u no repositório."
+          fi
 
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Show repository files (debug)
-        run: |
-          echo "PWD: $(pwd)"
-          ls -la
-
-      - name: Try download EPG remote (if env set)
-        run: |
-          if [ -n "$EPG_URL" ]; then
-            echo "EPG_URL definido. Tentando baixar..."
-            http_code=$(curl -s -w "%{http_code}" -o epg_remote.xml "$EPG_URL" || echo "000")
-            echo "HTTP status ao baixar EPG: $http_code"
-            if [ "$http_code" = "200" ]; then
-              echo "EPG remoto baixado com sucesso (epg_remote.xml)."
-            else
-              echo "AVISO: não foi possível baixar EPG remoto (status $http_code). Removendo arquivo parcial e usando epg.xml local se existir."
-              rm -f epg_remote.xml || true
-            fi
-          else
-            echo "EPG_URL não definido — pulando download remoto."
-          fi
-
-      - name: Try download M3U remote (if env set)
-        run: |
-          if [ -n "$M3U_URL" ]; then
-            echo "M3U_URL definido. Tentando baixar..."
-            http_code=$(curl -s -w "%{http_code}" -o lista.m3u "$M3U_URL" || echo "000")
-            echo "HTTP status ao baixar M3U: $http_code"
-            if [ "$http_code" = "200" ]; then
-              echo "M3U remoto baixado com sucesso (lista.m3u)."
-            else
-              echo "AVISO: não foi possível baixar M3U remoto (status $http_code). Removendo arquivo parcial e usando lista.m3u no repo se existir."
-              rm -f lista.m3u || true
-            fi
-          else
-            echo "M3U_URL não definido — esperando lista.m3u no repositório."
-          fi
-
-      - name: Install requirements (if present)
-        run: |
-          if [ -f requirements.txt ]; then
-            pip install -r requirements.txt
-          else
-            echo "No requirements.txt (ok)."
-          fi
+      - name: Install requirements (none needed, stdlib used)
+        run: python3 -V
 
       - name: Choose source EPG
         id: choose_epg
         run: |
           if [ -f epg_remote.xml ]; then
-            echo "source=epg_remote.xml" >> $GITHUB_OUTPUT
+            echo "source=epg_remote.xml" >> "$GITHUB_OUTPUT"
           elif [ -f epg.xml ]; then
-            echo "source=epg.xml" >> $GITHUB_OUTPUT
+            echo "source=epg.xml" >> "$GITHUB_OUTPUT"
           else
-            echo "No EPG found. Will still run generator but it may produce empty results."
-            echo "source=" >> $GITHUB_OUTPUT
+            echo "source=" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Run EPG generator
+      - name: Run EPG generator (local M3U)
         run: |
           set -e
           SRC="${{ steps.choose_epg.outputs.source }}"
-          echo "Using source EPG: $SRC"
-          # if generator accepts --m3u and --epg parameters
-          if [ -n "$SRC" ]; then
-            python3 epg_generator.py --m3u lista.m3u --epg "$SRC" --out epg.xml --threshold 0.72
-          else
-            python3 epg_generator.py --m3u lista.m3u --out epg.xml --threshold 0.72
+          if [ -z "$SRC" ]; then
+            echo "Nenhum EPG fonte encontrado. Saindo com erro."
+            exit 1
           fi
+          echo "Rodando gerador com source: $SRC"
+          python3 epg_generator_auto.py --m3u lista.m3u --epg "$SRC" --out epg.xml --threshold 0.72
 
       - name: Preview generated EPG (first 80 lines)
         if: always()
-        run: |
-          echo "Preview of generated epg.xml (first 80 lines):"
-          head -n 80 epg.xml || true
+        run: head -n 80 epg.xml || true
 
       - name: Commit and push epg.xml if changed
         run: |
-          git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add epg.xml || true
-          if ! git diff-index --quiet HEAD --; then
-            git commit -m "Atualiza EPG (automático)" || true
-            git push
-            echo "epg.xml foi atualizado e push efetuado."
+          if git diff --cached --quiet; then
+            echo "Sem alterações para commitar"
           else
-            echo "Sem alterações no epg.xml."
+            git commit -m "Atualiza epg.xml (automático)"
+            git push
           fi
