@@ -1,22 +1,32 @@
 name: Generate EPG
 on:
   schedule:
-    - cron: '0 */6 * * *' # a cada 6 horas (ajuste se quiser)
+    - cron: '0 */6 * * *'   # a cada 6 horas (ajuste se quiser)
   workflow_dispatch:
 
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show workspace (debug)
+        run: |
+          echo "Working directory: $(pwd)"
+          ls -la
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+
       - name: Install deps
         run: pip install requests
-      - name: Run generator
-        run: python epg_generator.py "https://raw.githubusercontent.com/USER/REPO/main/lista.m3u" --out epg.xml
+
+      - name: Run generator using local lista.m3u
+        run: python epg_generator.py lista.m3u --out epg.xml
+
       - name: Commit epg
         run: |
           git config user.name "github-actions[bot]"
